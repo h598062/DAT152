@@ -25,21 +25,24 @@ taskrow.innerHTML = `
     </tr>`;
 
 /**
-  * TaskList
-  * Manage view with list of tasks
-  */
+ * TaskList
+ * Manage view with list of tasks
+ */
 class TaskList extends HTMLElement {
     #statuslist = null;
+    #changeStatusCallback = null;
+    #removeCallback = null;
+
     constructor() {
         super();
-        
+
         const content = template.content.cloneNode(true);
         this.appendChild(content);
-        }
+    }
 
     /**
      * @public
-     * @param {Array} list with all possible task statuses
+     * @param {Array} allstatuses list with all possible task statuses
      */
     setStatuseslist(allstatuses) {
         if (!Array.isArray(allstatuses)) {
@@ -59,20 +62,58 @@ class TaskList extends HTMLElement {
      * @param {function} callback
      */
     changestatusCallback(callback) {
-        /**
-         * Fill inn the code
-         */
+        this.#changeStatusCallback = callback;
+        const rows = this.querySelectorAll("tbody>tr");
+        rows.forEach((row) => {
+            this.#setStatusChangeCallback(row);
+        });
+    }
+
+    /**
+     * Sets the statusChange callback for the given task row
+     * @param row {HTMLTableRowElement} The task row element
+     */
+    #setStatusChangeCallback(row) {
+        const id = row.id.slice(4);
+        const selectElm = row.querySelector("select");
+        selectElm.addEventListener("input", () => {
+            const newStatus = selectElm.value;
+            //console.log(`Change - id: ${id}  -  newStatus: ${newStatus}`);
+            const confirmed = window.confirm(`Set '${row.querySelector("td").innerText}' to ${newStatus}?`);
+            if (confirmed) {
+                this.#changeStatusCallback(id, newStatus);
+            }
+        })
     }
 
     /**
      * Add callback to run on click on delete button of a task
      * @public
-     * @param {function} callback
+     * @param {Function} callback
      */
     deletetaskCallback(callback) {
-        /**
-         * Fill inn the code
-         */
+        this.#removeCallback = callback;
+        // also update any rows which were previously added
+        const rows = this.querySelectorAll("tbody>tr");
+        rows.forEach((row) => {
+            this.#setRemoveCallback(row);
+        });
+    }
+
+    /**
+     * Sets the remove callback for the given task row
+     * @param row {HTMLTableRowElement} The task row element
+     */
+    #setRemoveCallback(row) {
+        const id = row.id.slice(4);
+        const removeBtn = row.querySelector("button");
+        removeBtn.addEventListener("click", () => {
+            //console.log(`Delete - id: ${id}`);
+            const confirmed = window.confirm(`Delete task '${row.querySelector("td").innerText}'?`);
+            if (confirmed) {
+                this.#removeCallback(id);
+            }
+        })
     }
 
     /**
@@ -104,7 +145,8 @@ class TaskList extends HTMLElement {
             tableBody = tableElm.createTBody();
         }
         const newRow = taskrow.content.cloneNode(true);
-        newRow.querySelector("tr").id = `task${task.id}`;
+        const row = newRow.querySelector("tr");
+        row.id = `task${task.id}`;
         const tds = newRow.querySelectorAll(`td`);
         tds[0].innerText = task.title;
         tds[1].innerText = task.status;
@@ -115,6 +157,12 @@ class TaskList extends HTMLElement {
             newStatus.innerText = status;
             statusSelect.appendChild(newStatus);
         });
+        if (typeof this.#changeStatusCallback === "function") {
+            this.#setStatusChangeCallback(row)
+        }
+        if (typeof this.#removeCallback === "function") {
+            this.#setRemoveCallback(row)
+        }
         tableBody.appendChild(newRow);
     }
 
@@ -123,7 +171,7 @@ class TaskList extends HTMLElement {
      * @param {Object} task - Object with attributes {'id':taskId,'status':newStatus}
      */
     updateTask(task) {
-        const { id = null, status = null } = task;
+        const {id = null, status = null} = task;
         if (id === null || !Number.isInteger(id) || id < 0) {
             console.error(`id ${id} is not a valid id`);
             return;
@@ -151,11 +199,12 @@ class TaskList extends HTMLElement {
     }
 
     /**
+     * Gets the amount of tasks in the list
      * @public
      * @returns {Number} - Number of tasks on display in view
      */
     getNumtasks() {
-        const tableRows = this.querySelectorAll("tbody tr");
+        const tableRows = this.querySelectorAll("tbody>tr");
         return tableRows.length;
     }
 
@@ -165,7 +214,7 @@ class TaskList extends HTMLElement {
      * @returns {boolean} true if valid
      */
     #validateTask(task) {
-        const { id = null, title = null, status = null } = task;
+        const {id = null, title = null, status = null} = task;
         let valid = true;
         if (id === null || !Number.isInteger(id) || id < 0) {
             console.error(`id ${id} from new task ${task} is not valid`);
@@ -182,4 +231,5 @@ class TaskList extends HTMLElement {
         return valid;
     }
 }
+
 customElements.define('task-list', TaskList);
