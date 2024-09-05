@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" href="#">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Author" content="Bjarte Wang-Kileng" />
+<link href="../main.css" rel="stylesheet" type="text/css" />
+<script src="js/parse_fail.js" defer></script>
+
+<title>Parse JSON string containing function will fail</title>
+</head>
+
+<body>
+    <h1>Parse JSON string containing function will fail</h1>
+
+    <p>All output is to the web console only.</p>
+    
+    <p>
+        Click the button to parse the following JSON string to <strong>Object</strong>:
+    </p>
+    <pre class="demo">'{ "_name": "Ole Olsen", "getName": function() { return this._name }, "setName": function(name) { this._name = name }}'
+    </pre>
+    <p>
+        <button type="button" id="parse">Parse JSON text</button>
+    </p>
+    
+    <p>Parsing the string to Object will fail due to the function, and an error message is written to the console of the browser.</p>
+</body>
+
+</html>

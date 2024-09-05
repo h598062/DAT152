@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" href="#">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Author" content="Bjarte Wang-Kileng" />
+<link href="../main.css" rel="stylesheet" type="text/css" />
+<script src="js/class_private.js" defer></script>
+
+<title>Serialize instance of Class with private field</title>
+</head>
+
+<body>
+    <h1>Serialize instance of Class with private field</h1>
+
+    <p>All output is to the web console only.</p>
+    <p>
+        Click the button to serialize instance of the following class:
+    </p>
+    <pre class="demo">class Student {
+    // A private property
+    #name = "Ole Olsen";
+
+    constructor(name) {
+        this.#name = name;
+    }
+
+    get name() { return this.#name }
+
+    set name(name) { this.#name = name }
+
+    getName() {
+        return this.#name;
+    }
+}</pre>
+    <p>
+        <button type="button" id="serialize">Serialize object</button>
+    </p>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" href="#">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Author" content="Bjarte Wang-Kileng" />
+<link href="../main.css" rel="stylesheet" type="text/css" />
+<script src="js/getter_enumerable.js" defer></script>
+
+<title>Serialize object, and using enumerable</title>
+</head>
+
+<body>
+    <h1>Serialize object, and using enumerable</h1>
+
+    <p>All output is to the web console only.</p>
+    <p>
+        Click the button to serialize the following object:
+    </p>
+    <pre class="demo">const student = {
+    "_givenname": null,
+    "_reg": /\p{Lu}\p{Ll}+/u,
+
+    get givenname() { return this._givenname },
+    set givenname(givenname) {
+        if (! this._reg.test(givenname)) throw new Error("Wrong format on first name");
+        this._givenname = givenname
+    }
+};
+
+// Do not serialize "_givenname" and "_reg"
+Object.defineProperties(student, {
+    "_givenname": { "enumerable": false },
+    "_reg": { "enumerable": false }
+});</pre>
+    <p>
+        <button type="button" id="bt">Serialize object</button>
+    </p>    
+</body>
+
+</html>

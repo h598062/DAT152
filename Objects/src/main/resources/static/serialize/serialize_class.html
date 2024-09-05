@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" href="#">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Author" content="Bjarte Wang-Kileng" />
+<link href="../main.css" rel="stylesheet" type="text/css" />
+<script src="js/serialize_class.js" defer></script>
+
+<title>Serialize instance of Class</title>
+</head>
+
+<body>
+    <h1>Serialize instance of Class</h1>
+
+    <p>All output is to the web console only.</p>
+    <p>
+        Click the button to serialize instance of the following class:
+    </p>
+    <pre class="demo">class Student {
+    // Private
+    #name = "Ole Olsen";
+
+    // Public
+    phone = "12345678";
+
+    constructor(name,phone) {
+        this.#name = name;
+        this.phone = phone;
+    }
+
+    getName() { return this.#name }
+    setName(name) { this.#name = name }
+    
+    getPhone() {
+        return this.phone;
+    }
+}</pre>
+    <p>
+        <button type="button" id="serialize">Serialize instance of Class</button>
+    </p>
+</body>
+
+</html>

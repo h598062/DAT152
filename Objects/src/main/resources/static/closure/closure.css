@@ -1,0 +1,25 @@
+.hidden {
+    display: none;
+}
+
+fieldset {
+    /* margin: 5px;
+    padding: 10px; */
+    
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    grid-gap: 10px;
+}
+
+fieldset label:after {
+    content: ":";
+}
+
+fieldset span {
+    grid-column: 1/span 2;    
+}
+
+legend {
+    color: red;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" href="#">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Author" content="Bjarte Wang-Kileng" />
+<link href="../main.css" rel="stylesheet" type="text/css" />
+<script src="js/getset_property.js" defer></script>
+
+<title>Object with get and set as properties</title>
+</head>
+
+<body>
+    <h1>Object with gettter and setter</h1>
+
+    <p>All output is to the web console only.</p>
+    <p>
+        Click the button work wit hobject:
+    </p>
+    <pre class="demo">const student = {};
+
+Object.defineProperties(student, {
+    "_name": { "value": "Ole Olsen" },
+
+    "name": {
+        "set": function(name) {
+            this._name = name
+        },
+        "get": function() { return this._name }
+    }
+
+});</pre>
+    <p>
+        <button type="button" id="bt">Use object</button>
+    </p>    
+</body>
+
+</html>

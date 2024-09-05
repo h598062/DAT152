@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" href="#">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="Author" content="Bjarte Wang-Kileng" />
+    <link href="../main.css" rel="stylesheet" type="text/css" />
+    <script src="js/proxydemo.js" defer></script>
+    <title>Capture access to object properties</title>
+</head>
+
+<body>
+    <h1>Capture access to object properties</h1>
+
+    <p>All output is to the web console only.</p>
+    <p>
+        The proxy captures all get access to the object properties.
+        Access to property <em>_name</em> will throw an error.
+    </p>
+    <pre class="demo">const student = {
+    "_name": "Ole",
+    get name() { return this._name },
+    set name(name) { this._name = name }
+};
+
+const handler = {
+    get (target, property) {
+        if (!property in target) {
+            throw new ReferenceError(`No such property "${property}"`);
+        } else {
+            if (property[0] === "_") {
+                throw new ReferenceError(`No such property "${property}"`);
+            } else {
+                return Reflect.get(target,property);
+            }
+        }
+    }
+};
+
+const proxy = new Proxy(student, handler);</pre>
+    <p>
+        <button type="button" id="name">Get value of <em>name</em></button>
+        <button type="button" id="pname">Get value of <em>_name</em></button>
+    </p>
+</body>
+
+</html>

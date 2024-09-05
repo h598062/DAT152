@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" href="#">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Author" content="Bjarte Wang-Kileng" />
+<link href="/Objects/main.css" rel="stylesheet" type="text/css" />
+<script src="js/subclass.js" type="module"></script>
+<title>A demonstration with subclass</title>
+</head>
+
+<body>
+    <h1>A demonstration with subclass</h1>
+
+    <p>All output is to the web console only.</p>
+    
+    
+    <pre class="demo">import Person from './person.js';
+
+export default class Student extends Person {
+
+    // Private field
+    #course;
+
+    // Private static field
+    static #courseformat = /^\p{Lu}{3}\d{3}$/u;
+
+    constructor(name, course) {
+        super(name); // Calling parent constructor and initializing 'this'
+        this.setCourse(course);
+    }
+
+    // Public method
+    setCourse(course) {
+        if (!Student.#courseformat.test(course)) throw new Error("Wrong course format");
+        this.#course = course;
+    }
+
+    // Public method
+    getCourse() { return this.#course }
+
+    // Public method
+    toJSON() {
+        return {
+            name: this.getName(),
+            course: this.getCourse()
+        };
+    }
+}</pre>
+    
+</body>
+
+</html>

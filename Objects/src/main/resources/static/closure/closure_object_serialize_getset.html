@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" href="#">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="Author" content="Bjarte Wang-Kileng" />
+    <link href="../main.css" rel="stylesheet" type="text/css" />
+    <link href="closure.css" rel="stylesheet" type="text/css" />
+    <script src="js/closure_object_serialize_getset.js" type="module"></script>
+
+    <title>Serialize object with getter and private data through closure</title>
+</head>
+
+<body>
+    <h1>Serialize object with getter and private data through closure</h1>
+    
+    <p>Observe that <em>JSON.stringify</em> will return a string representing an empty object as there are no public properties in the <em>student</em> object.</p>
+
+    <pre class="demo">const student = (
+    function() {
+        // Private
+        let fname = "Ole";
+        let lname = "Olsen";
+
+        return {
+            // Public
+            get firstname() { return fname },
+            set firstname(fn) { fname = fn },
+            get lastname() { return lname },
+            set lastname(ln) { lname = ln }
+        }
+    }
+)();</pre>
+ 
+    <form>
+        <fieldset>
+            <legend>Student data</legend>
+            <label for="givenname">First name</label><input type="text" id="givenname">
+            <label for="familyname">Last name</label><input type="text" id="familyname">
+
+            <span><button type="button" id="show">Show student</button>
+            <button type="button" id="store">Modify data</button></span>
+        </fieldset>
+    </form>
+    <p id="display">Nothing yet to show</p>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" href="#">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="Author" content="Bjarte Wang-Kileng" />
+    <link href="../main.css" rel="stylesheet" type="text/css" />
+    <link href="../main.css" rel="stylesheet" type="text/css" />
+    <link href="prototype.css" rel="stylesheet" type="text/css" />
+    <script src="js/prototypechain.js" defer></script>
+
+    <title>The prototype chain</title>
+</head>
+
+<body>
+    <h1>The prototype chain</h1>
+
+    <p>All output is to the web console only.</p>
+    <p>
+        Select property and use the buttons to locate property.
+    </p>
+    <form>
+        <div>
+        <label for="property">Property</label>
+        <select id="property">
+            <option value="sayWelcome">sayWelcome</option>
+            <option value="sayHello">sayHello</option>
+            <option value="sayGoodbye">sayGoodbye</option>
+        </select>
+        </div>
+        <button type="button" id="instance">myInstance</button>
+        <button type="button" id="class">MyClass.prototype</button>
+        <button type="button" id="constructor">Object.getPrototypeOf(myInstance)</button>
+        <button type="button" id="object">Object.getPrototypeOf(Object.getPrototypeOf(myInstance))</button>
+    </form>
+
+</body>
+
+</html>

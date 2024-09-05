@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" href="#">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="Author" content="Bjarte Wang-Kileng" />
+    <link href="../main.css" rel="stylesheet" type="text/css" />
+    <script src="js/configurable.js" defer></script>
+
+    <title>Configurable property</title>
+</head>
+
+<body>
+    <h1>Configurable property</h1>
+
+    <p>All output is to the web console only.</p>
+    <p>
+        Click the button to iterate through the enumerable properties of object:
+    </p>
+    <pre class="demo">const student = {};
+
+Object.defineProperties(student, {
+    "givenname": { "value": "Ole",   "enumerable": true, <span class="emph">"configurable": true</span> },
+    "familyname": { "value": "Olsen", "enumerable": true, <span class="emph">"configurable": false</span> },
+});</pre>
+
+    <p>
+        <button type="button" id="iterate">Iterate through object</button>
+        <button type="button" id="deleteGivenname">Delete property <em>givenname</em></button>
+        <button type="button" id="deleteFamilyname">Delete property <em>familyname</em></button>
+        <button type="button" id="changeGivenname">Change property of <em>givenname</em></button>
+        <button type="button" id="changeFamilyname">Change property of <em>familyname</em></button>
+    </p>
+</body>
+
+</html>

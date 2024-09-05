@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" href="#">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Author" content="Bjarte Wang-Kileng" />
+<link href="../main.css" rel="stylesheet" type="text/css" />
+<script src="js/readonlyerror.js" defer></script>
+
+<title>Error when modifying readonly property</title>
+</head>
+
+<body>
+    <h1>Error when modifying readonly property</h1>
+
+    <p>All output is to the web console only.</p>
+    <p>
+        Click the button to try to modify a read only property <em>givenname</em>:
+    </p>
+    <pre class="demo">const student = {};
+Object.defineProperty(student,"givenname",{"value":"Ole"});
+
+student.givenname = "Per"; // Will fail</pre>
+
+    <p>
+        <button type="button" id="bt">Try to modify readonly property</button>
+    </p>    
+</body>
+
+</html>

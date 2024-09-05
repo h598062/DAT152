@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" href="#">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Author" content="Bjarte Wang-Kileng" />
+<link href="../main.css" rel="stylesheet" type="text/css" />
+<script src="js/freezearray.js" defer></script>
+
+<title>Freeze array</title>
+</head>
+
+<body>
+    <h1>Freeze array</h1>
+
+    <p>Method <em>freeze</em> work also objects that inherit <strong>Object</strong>, e.g. instance of <strong>Array</strong>.</p>
+    <p>
+        Click the button create the object below, and the properties of property <em>givenname</em>:
+    </p>
+    <pre class="demo">const student = {};
+Object.defineProperty(student,"givenname",{"value":"Ole"});</pre>
+    <p>
+        <button type="button" id="bt">Check property of <em>givenname</em></button>
+    </p>    
+</body>
+
+</html>

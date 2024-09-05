@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" href="#">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Author" content="Bjarte Wang-Kileng" />
+<link href="../main.css" rel="stylesheet" type="text/css" />
+<script src="js/private.js" defer></script>
+
+<title>No support for private fields in objects</title>
+</head>
+
+<body>
+    <h1>No support for private fields in objects</h1>
+
+    <p>All output is to the web console only.</p>
+    <p>
+        Click the button to serialize the following object:
+    </p>
+    <pre class="demo">
+    const person = {
+        #name: "Ole Olsen",
+
+        get name() { return this.#name },
+        set name (name) { this.#name = name }
+    };
+    </pre>
+    <p>
+        <button type="button" id="bt">Serialize object</button>
+    </p>    
+</body>
+
+</html>

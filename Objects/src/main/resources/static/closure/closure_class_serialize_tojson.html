@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" href="#">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="Author" content="Bjarte Wang-Kileng" />
+    <link href="../main.css" rel="stylesheet" type="text/css" />
+    <link href="closure.css" rel="stylesheet" type="text/css" />
+    <script src="js/closure_class_serialize_tojson.js" type="module"></script>
+
+    <title>Trying to serialize class with private data through closure</title>
+</head>
+
+<body>
+    <h1>Trying to serialize class with private data through closure</h1>
+
+    <p>The function <em>JSON.stringify</em> will use the <em>toJSON</em> method to serialize the <em>student</em> object.</p>
+    
+    <pre class="demo">class Student {
+    constructor(givenname, familyname) {
+        // Private
+        // givenname, familyname, phone
+        let phone = "11223344";
+
+        // Public
+        this.getGivenname = () => { return givenname };
+        this.setGivenname = (fn) => { givenname = fn };
+        this.getFamilyname = () => { return familyname };
+        this.setFamilyname = (ln) => { familyname = ln };
+        this.getPhone = () => { return phone };
+        this.setPhone = (ph) => { phone = ph };
+        this.toJSON = () => {return {"name": `${this.getGivenname()} ${this.getFamilyname()}`}};
+    }
+}</pre>
+ 
+    <form>
+        <fieldset>
+            <legend>Student data</legend>
+            <label for"givenname">First name</label><input type="text" id="givenname">
+            <label for"Familyname">Last name</label><input type="text" id="Familyname">
+            <label for"phone">Phone</label><input type="text" id="phone">
+
+            <span><button type="button" id="show">Show student</button>
+            <button type="button" id="store">Modify data</button></span>
+        </fieldset>
+    </form>
+    <p id="display">Nothing yet to show</p>
+</body>
+
+</html>

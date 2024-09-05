@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" href="#">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Author" content="Bjarte Wang-Kileng" />
+<link href="../main.css" rel="stylesheet" type="text/css" />
+<script src="js/createproperty.js" defer></script>
+
+<title>Create propertys</title>
+</head>
+
+<body>
+    <h1>Create property</h1>
+
+    <p>All output is to the web console only.</p>
+    <p>
+        Click the button create the object below, and the properties of property <em>givenname</em>:
+    </p>
+    <pre class="demo">const student = {};
+
+Object.defineProperty(student, "givenname", {
+    "value": "Ole",
+    "writable": true,
+    "enumerable": true,
+    "configurable": false
+});</pre>
+    <p>
+        <button type="button" id="bt">Check property of <em>givenname</em></button>
+    </p>    
+</body>
+
+</html>

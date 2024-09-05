@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" href="#">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Author" content="Bjarte Wang-Kileng" />
+<link href="../main.css" rel="stylesheet" type="text/css" />
+<script src="js/enumerable.js" defer></script>
+
+<title>Enumerable property</title>
+</head>
+
+<body>
+    <h1>Enumerable property</h1>
+
+    <p>All output is to the web console only.</p>
+    <p>
+        Click the button to iterate through the enumerable properties of object:
+    </p>
+    <pre class="demo">const student = {};
+
+Object.defineProperties(student, {
+    "givenname": { "value": "Ole",          <span class="emph">"enumerable": true</span> },
+    "familyname": { "value": "Olsen",       <span class="emph">"enumerable": false</span> },
+    "address": { "value": "Olsenbakken 22", <span class="emph">"enumerable": true</span> }
+});</pre>
+
+    <p>
+        <button type="button" id="bt">Iterate object</button>
+    </p>    
+</body>
+
+</html>

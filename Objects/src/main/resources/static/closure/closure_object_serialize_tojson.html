@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" href="#">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="Author" content="Bjarte Wang-Kileng" />
+    <link href="../main.css" rel="stylesheet" type="text/css" />
+    <link href="closure.css" rel="stylesheet" type="text/css" />
+    <script src="js/closure_object_serialize_tojson.js" type="module"></script>
+
+    <title>Object with toJSON method private data through closure</title>
+</head>
+
+<body>
+    <h1>Object with toJSON method private data through closure</h1>
+
+    <p>The function <em>JSON.stringify</em> will use the <em>toJSON</em> method to serialize the <em>student</em> object.</p>
+
+    <pre class="demo">const student = (
+    function() {
+        // Private
+        let givenname = "Ole";
+        let familyname = "Olsen";
+
+        return {
+            // Public
+            getGivenname() { return givenname },
+            setGivenname(fn) { givenname = fn },
+            getFamilyname() { return familyname },
+            setFamilyname(ln) { familyname = ln },
+            toJSON() {
+                return {
+                    "name": `${this.getGivenname()} ${this.getFamilyname()}`
+                }
+            }
+        }
+    }
+)();</pre>
+ 
+    <form>
+        <fieldset>
+            <legend>Student data</legend>
+            <label for="givenname">First name</label><input type="text" id="givenname">
+            <label for="familyname">Last name</label><input type="text" id="familyname">
+
+            <span><button type="button" id="show">Show student</button>
+            <button type="button" id="store">Modify data</button></span>
+        </fieldset>
+    </form>
+    <p id="display">Nothing yet to show</p>
+</body>
+
+</html>
