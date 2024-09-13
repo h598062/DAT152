@@ -1,0 +1,403 @@
+https://reactjs.org/tutorial/tutorial.html
+https://react.dev/learn/describing-the-ui
+
+Installere:
+* node.js
+* npm - package manager for node.js
+
+
+########################################################################
+####                                                                ####
+#### Slide 2                                                        ####
+#### welcome                                                        ####
+####                                                                ####
+########################################################################
+
+cd ~/undervisning/klasser/DAT152/H2023/forelesninger/emner/l7.react/demo/react/
+rm -rf dat152-project
+# No capital letters in project name
+npx create-react-app dat152-project
+
+#public folder - Only content of this folder can be referenced from browser.
+#node_modules - Modules used by npm to create the web application
+#src folder - Here we put the dynamic content
+
+rm -f dat152-project/src/*
+cp code/welcome/* dat152-project/src/
+
+#Show content of files
+less dat152-project/public/index.html
+less dat152-project/src/index.js
+less dat152-project/src/index.css
+
+cd dat152-project
+npm start
+
+#Kill, and try to reload browser window
+
+#Open also the public/index.html as file in the browser
+
+#Translate the React code to legal HTML, JavaScript and CSS
+PUBLIC_URL=. npm run build
+#Result is found in folder build
+
+#PUBLIC_URL will be prepended to URLs. See e.g. public/index.html.
+#If empty, project must be put at top web folder of web server
+
+#Copy to web server
+scp -r build eple:~/public_html
+
+#On eple
+# - Rename folder
+rm -rf ~/public_html/welcome
+mv ~/public_html/build ~/public_html/welcome
+# Allow apache read acces
+find ~/public_html/welcome -type d -exec chmod a+rx {} \;
+find ~/public_html/welcome -type f -exec chmod a+r {} \;
+
+#Open in browser
+# - https://eple.hvl.no/~bki/welcome
+
+
+########################################################################
+####                                                                ####
+#### Slide 3                                                        ####
+####                                                                ####
+########################################################################
+
+#-----------------------------------------------------------------------
+#---                                                                ----
+#--- Slide 3 - Demo 1                                               ----
+#--- Local scope                                                    ----
+#---                                                                ----
+#-----------------------------------------------------------------------
+
+cd ~/undervisning/klasser/DAT152/H2023/forelesninger/emner/l7.react/demo/react/
+
+rm -f dat152-project/src/*
+cp code/cssmodules-localscope/* dat152-project/src/
+
+#Show content of files
+less dat152-project/src/student.module.css
+less dat152-project/src/teacher.module.css
+less dat152-project/src/index.js
+
+cd dat152-project/
+npm start
+
+
+#-----------------------------------------------------------------------
+#---                                                                ----
+#--- Slide 3 - Demo 2                                               ----
+#--- Class composition                                              ----
+#---                                                                ----
+#-----------------------------------------------------------------------
+
+cd ~/undervisning/klasser/DAT152/H2023/forelesninger/emner/l7.react/demo/react
+
+rm -f dat152-project/src/*
+cp code/cssmodules-composition/* dat152-project/src/
+
+#Show content of files
+less dat152-project/src/person.module.css
+less dat152-project/src/index.js
+
+cd dat152-project
+npm start
+
+
+#-----------------------------------------------------------------------
+#---                                                                ----
+#--- Slide 3 - Demo 3                                               ----
+#--- Other features                                                 ----
+#---                                                                ----
+#-----------------------------------------------------------------------
+
+cd ~/undervisning/klasser/DAT152/H2023/forelesninger/emner/l7.react/demo/react
+
+rm -f dat152-project/src/*
+cp code/cssmodules-more/* dat152-project/src/
+
+#Show content of files
+less dat152-project/src/person.module.css
+less dat152-project/src/index.js
+
+cd dat152-project
+npm start
+
+
+########################################################################
+####                                                                ####
+#### Slide 4                                                        ####
+#### jsx-intro                                                      ####
+####                                                                ####
+########################################################################
+
+cd ~/undervisning/klasser/DAT152/H2023/forelesninger/emner/l7.react/demo/react
+
+rm -f dat152-project/src/*
+cp code/jsx-intro/* dat152-project/src/
+
+#Show content
+less dat152-project/src/index.js
+
+cd dat152-project
+npm start
+
+
+########################################################################
+####                                                                ####
+#### Slide 5                                                        ####
+#### jsx-expressions                                                ####
+####                                                                ####
+########################################################################
+
+cd ~/undervisning/klasser/DAT152/H2023/forelesninger/emner/l7.react/demo/react
+
+rm -f dat152-project/src/*
+cp code/jsx-expressions/* dat152-project/src/
+
+#Show content
+less dat152-project/src/index.js
+
+cd dat152-project
+npm start
+
+
+########################################################################
+####                                                                ####
+#### Slide 6                                                        ####
+#### jsx-logical                                                    ####
+####                                                                ####
+########################################################################
+
+cd ~/undervisning/klasser/DAT152/H2023/forelesninger/emner/l7.react/demo/react
+
+rm -f dat152-project/src/*
+cp code/jsx-logical/* dat152-project/src/
+
+#Show content
+less dat152-project/src/index.js
+
+cd dat152-project
+npm start
+
+
+########################################################################
+####                                                                ####
+#### Slide 7                                                        ####
+#### jsx-javascript                                                 ####
+####                                                                ####
+########################################################################
+
+cd ~/undervisning/klasser/DAT152/H2023/forelesninger/emner/l7.react/demo/react
+
+rm -f dat152-project/src/*
+cp code/jsx-javascript/* dat152-project/src/
+
+#Show content
+less dat152-project/src/index.js
+
+cd dat152-project
+npm start
+
+
+########################################################################
+####                                                                ####
+#### Slide 10                                                       ####
+#### jsx-javascript                                                 ####
+####                                                                ####
+########################################################################
+
+cd ~/undervisning/klasser/DAT152/H2023/forelesninger/emner/l7.react/demo/react
+
+less dat152-project/node_modules/react-scripts/config/paths.js
+
+
+########################################################################
+####                                                                ####
+#### Slide 12                                                       ####
+#### component-state                                                ####
+########################################################################
+
+cd ~/undervisning/klasser/DAT152/H2023/forelesninger/emner/l7.react/demo/react
+
+rm -f dat152-project/src/*
+cp code/component-state/* dat152-project/src/
+
+#Show content
+less dat152-project/src/index.js
+
+cd dat152-project
+npm start
+
+
+########################################################################
+####                                                                ####
+#### Slide 14                                                       ####
+#### props                                                          ####
+####                                                                ####
+########################################################################
+
+cd ~/undervisning/klasser/DAT152/H2023/forelesninger/emner/l7.react/demo/react
+
+rm -f dat152-project/src/*
+cp code/props/* dat152-project/src/
+
+#Show content
+less dat152-project/src/index.js
+
+cd dat152-project
+npm start
+
+
+########################################################################
+####                                                                ####
+#### Slide 17                                                       ####
+#### eventintro                                                     ####
+####                                                                ####
+########################################################################
+
+cd ~/undervisning/klasser/DAT152/H2023/forelesninger/emner/l7.react/demo/react
+
+rm -f dat152-project/src/*
+cp code/eventintro/* dat152-project/src/
+
+#Show content
+less dat152-project/src/index.js
+
+cd dat152-project
+npm start
+
+
+########################################################################
+####                                                                ####
+#### Slide 18                                                       ####
+#### reactevent                                                     ####
+####                                                                ####
+########################################################################
+
+cd ~/undervisning/klasser/DAT152/H2023/forelesninger/emner/l7.react/demo/react
+
+rm -f dat152-project/src/*
+cp code/reactevent/* dat152-project/src/
+
+#Show content
+less dat152-project/src/index.js
+
+cd dat152-project
+npm start
+
+
+########################################################################
+####                                                                ####
+#### Slide 19                                                       ####
+####                                                                ####
+########################################################################
+
+#-----------------------------------------------------------------------
+#---                                                                ----
+#--- Slide 19 - Demo 1                                              ----
+#--- usingmap                                                       ----
+#---                                                                ----
+#-----------------------------------------------------------------------
+
+cd ~/undervisning/klasser/DAT152/H2023/forelesninger/emner/l7.react/demo/react
+
+rm -f dat152-project/src/*
+cp code/usingmap/* dat152-project/src/
+
+#Show content
+less dat152-project/src/index.js
+
+cd dat152-project
+npm start
+
+#Show the console output in the browser: Warning on missing key
+
+
+#-----------------------------------------------------------------------
+#---                                                                ----
+#--- Slide 19 - Demo 2                                              ----
+#--- usingmap_key                                                   ----
+#---                                                                ----
+#-----------------------------------------------------------------------
+
+cd ~/undervisning/klasser/DAT152/H2023/forelesninger/emner/l7.react/demo/react
+
+rm -f dat152-project/src/*
+cp code/usingmap_key/* dat152-project/src/
+
+#Show content
+less dat152-project/src/index.js
+
+cd dat152-project
+npm start
+
+
+########################################################################
+Slide 20
+
+https://eple.hvl.no/fag/dat152/h2023/react/form.shtml
+
+
+########################################################################
+####                                                                ####
+#### Slide 21                                                       ####
+#### form-controlled                                                ####
+########################################################################
+
+cd ~/undervisning/klasser/DAT152/H2023/forelesninger/emner/l7.react/demo/react
+
+rm -f dat152-project/src/*
+cp code/form-controlled/* dat152-project/src/
+
+#Show content
+less dat152-project/src/index.js
+
+cd dat152-project
+npm start
+
+
+########################################################################
+####                                                                ####
+#### Slide 26                                                      ####
+#### customerlist                                                  ####
+########################################################################
+
+#-----------------------------------------------------------------------
+#---                                                                ----
+#--- Slide 26 - Demo 1 - the problem                                ----
+#--- customerlist_layout                                            ----
+#---                                                                ----
+#-----------------------------------------------------------------------
+
+
+cd ~/undervisning/klasser/DAT152/H2023/forelesninger/emner/l7.react/demo/react
+
+rm -f dat152-project/src/*
+cp code/customerlist_layout/* dat152-project/src/
+
+#Show content
+less dat152-project/src/index.js
+
+cd dat152-project
+npm start
+
+#-----------------------------------------------------------------------
+#---                                                                ----
+#--- Slide 26 - Demo 2 - solution                                   ----
+#--- customerlist                                            ----
+#---                                                                ----
+#-----------------------------------------------------------------------
+
+cd ~/undervisning/klasser/DAT152/H2023/forelesninger/emner/l7.react/demo/react
+
+rm -f dat152-project/src/*
+cp code/customerlist/* dat152-project/src/
+
+#Show content
+less dat152-project/src/index.js
+
+cd dat152-project
+npm start
