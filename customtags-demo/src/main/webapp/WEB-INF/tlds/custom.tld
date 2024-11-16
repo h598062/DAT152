@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<taglib xmlns="https://jakarta.ee/xml/ns/jakartaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee  
+	https://jakarta.ee/xml/ns/jakartaee/web-jsptaglibrary_3_1.xsd" 
+	version="3.1">
+
+	<tlib-version>1.0</tlib-version>
+	<short-name>dat152</short-name>
+	<uri>dat152-tag-lib</uri>
+	
+	<tag>
+		<description>Print Hello World</description>
+		<name>printHelloWorld</name>
+		<tag-class>no.hvl.dat152.tags.HelloWorldTag</tag-class>
+		<body-content>empty</body-content>
+	</tag>
+	
+	<tag>
+		<description>CSRF Random Token</description>
+		<name>addCSRFToken</name>
+		<tag-class>no.hvl.dat152.tags.CSRFTokenTag</tag-class>
+		<body-content>empty</body-content>
+	</tag>
+	
+	<tag>
+		<description>Hash Input</description>
+		<name>hashInput</name>
+		<tag-class>no.hvl.dat152.tags.Hash256Tag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<name>input</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>String</type>
+		</attribute>
+	</tag>
+	
+		<tag>
+		<description>Fahr to celcius</description>
+		<name>fahrToCelcius</name>
+		<tag-class>no.hvl.dat152.tags.FahrToCelcius</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<name>fahr</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>double</type>
+		</attribute>
+	</tag>
+	
+	<tag>
+		<description>Page Visit Counter</description>
+		<name>pageVisitCounter</name>
+		<tag-class>no.hvl.dat152.tags.PageVisitCounter</tag-class>
+		<body-content>empty</body-content>
+	</tag>
+</taglib>
